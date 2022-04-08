@@ -28,6 +28,7 @@ classdef PlotDrivingScenario< matlab.System
             grid on;
             axis equal;
             hold on;
+            set(gca, 'FontSize', 50);
             obj.plotRoadLine(-obj.LaneWidth/2, '-'); % Right
             obj.plotRoadLine(obj.LaneWidth/2, '--'); % Center
             obj.plotRoadLine(3*obj.LaneWidth/2, '-'); % Left
@@ -93,7 +94,7 @@ classdef PlotDrivingScenario< matlab.System
             obj.plots2update.annotations.drivingMode = ...
                 annotation('textbox',[.5 .72 .2 .2], 'String', ...
                            ['Current Driving Mode: ' obj.drivingModes(currentDrivingMode)], ...
-                           'EdgeColor','none');
+                           'EdgeColor', 'none');
             
             %% Ego Reachability
             % Min and max boundary curve

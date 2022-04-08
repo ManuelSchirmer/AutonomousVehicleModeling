@@ -23,7 +23,7 @@ prepare_simulation('n_other', 1, 's_0', [0, 40], 'd_0', [0, 0], ...
     'v_0', [20, 10], 'v_ref', [20, 10], 'planner', 'FORMAL', 'lateral', 'Stanley'); % With uncertainty
 out = run_simulation('simTime', 12);
 
-E_max = max(abs(out.d-out.d_ref));
+E_max = max(abs(out.d-out.d_ref))
 ISE = max(out.ISE_d)
 
 figure;
@@ -83,7 +83,7 @@ plot(out.s_other(1:round(n_points/t_sim):end, 2), out.d_other(1:round(n_points/t
 plot(out.s(1:round(n_points/t_sim):end), out.d(1:round(n_points/t_sim):end), ...
      'Color', 'r', 'Marker', 'o', 'LineStyle', 'none', 'LineWidth', 5);
 hold off;
-title('Rule-Based Planner', 'FontSize', 50);
+title('Scenario 2: Rule-Based Planner', 'FontSize', 50);
 xlabel('Longitudinal distance s [m]', 'FontSize', 50);
 ylabel('Lateral Offset d [m]', 'FontSize', 50);
 set(gca, 'FontSize', 50);
@@ -99,9 +99,9 @@ n_points = length(out.tout);
 grid on;
 hold on;
 plot(out.s, out.d, 'Color', 'r', 'LineWidth', 5);
-%plot(out.s_other(:, 1), ones(n_points, 1)*out.d_other(:, 1), 'Color', 'b', 'LineWidth', 5);
-%plot(out.s_other(:, 2), ones(n_points, 1)*out.d_other(:, 2), 'Color', 'c', 'LineWidth', 5);
-%legend('d_{1}(s)', 'd_{2}(s)', 'd_{3}(s)', 'FontSize', 50);
+% plot(out.s_other(:, 1), ones(n_points, 1)*out.d_other(:, 1), 'Color', 'b', 'LineWidth', 5);
+% plot(out.s_other(:, 2), ones(n_points, 1)*out.d_other(:, 2), 'Color', 'c', 'LineWidth', 5);
+% legend('d_{1}(s)', 'd_{2}(s)', 'd_{3}(s)', 'FontSize', 50);
 
 plot(out.s_other(1:round(n_points/t_sim):end, 1), out.d_other(1:round(n_points/t_sim):end, 1), ...
      'Color', 'b', 'Marker', 'o', 'LineStyle', 'none', 'LineWidth', 5);
@@ -110,7 +110,7 @@ plot(out.s_other(1:round(n_points/t_sim):end, 2), out.d_other(1:round(n_points/t
 plot(out.s(1:round(n_points/t_sim):end), out.d(1:round(n_points/t_sim):end), ...
      'Color', 'r', 'Marker', 'o', 'LineStyle', 'none', 'LineWidth', 5);
 hold off;
-title('Formal Planner', 'FontSize', 50);
+title('Scenario 2: Formal Planner', 'FontSize', 50);
 xlabel('Longitudinal distance s [m]', 'FontSize', 50);
 ylabel('Lateral Offset d [m]', 'FontSize', 50);
 set(gca, 'FontSize', 50);
@@ -120,7 +120,8 @@ set(gca, 'FontSize', 50);
 t_sim = 17;
 prepare_simulation('n_other', 3, 's_0', [140, 185, 0, 200], 'd_0', [0, 0, 3.7, 3.7], ...
     'v_0', [15, 13, 25, 14], 'v_ref', [15, 13, 25, 14], 'planner', 'MANUAL'); % With uncertainty
-out = run_simulation('simTime', 17);
+out = run_simulation('simTime', t_sim);
+t_col = 13.8; % Hard coded
 
 figure;
 n_points = length(out.tout);
@@ -132,16 +133,16 @@ plot(out.s, out.d, 'Color', 'r', 'LineWidth', 5);
 %plot(out.s_other(:, 3), ones(n_points, 1)*out.d_other(:, 3), 'Color', 'g', 'LineWidth', 5);
 %legend('d_{1}(s)', 'd_{2}(s)', 'd_{3}(s)', 'd_{4}(s)', 'FontSize', 50);
 
-plot(out.s_other(1:round(n_points/t_sim):end, 1), out.d_other(1:round(n_points/t_sim):end, 1), ...
+plot(out.s_other(1:round(n_points/t_col):end, 1), out.d_other(1:round(n_points/t_col):end, 1), ...
      'Color', 'b', 'Marker', 'o', 'LineStyle', 'none', 'LineWidth', 5);
-plot(out.s_other(1:round(n_points/t_sim):end, 2), out.d_other(1:round(n_points/t_sim):end, 2), ...
+plot(out.s_other(1:round(n_points/t_col):end, 2), out.d_other(1:round(n_points/t_col):end, 2), ...
      'Color', 'c', 'Marker', 'o', 'LineStyle', 'none', 'LineWidth', 5);
-plot(out.s_other(1:round(n_points/t_sim):end, 3), out.d_other(1:round(n_points/t_sim):end, 3), ...
+plot(out.s_other(1:round(n_points/t_col):end, 3), out.d_other(1:round(n_points/t_col):end, 3), ...
      'Color', 'g', 'Marker', 'o', 'LineStyle', 'none', 'LineWidth', 5);
-plot(out.s(1:round(n_points/t_sim):end), out.d(1:round(n_points/t_sim):end), ...
+plot(out.s(1:round(n_points/t_col):end), out.d(1:round(n_points/t_col):end), ...
      'Color', 'r', 'Marker', 'o', 'LineStyle', 'none', 'LineWidth', 5);
 hold off;
-title('Rule-Based Planner', 'FontSize', 50);
+title('Scenario 3: Rule-Based Planner', 'FontSize', 50);
 xlabel('Longitudinal distance s [m]', 'FontSize', 50);
 ylabel('Lateral Offset d [m]', 'FontSize', 50);
 set(gca, 'FontSize', 50);
@@ -171,7 +172,7 @@ plot(out.s_other(1:round(n_points/t_sim):end, 3), out.d_other(1:round(n_points/t
 plot(out.s(1:round(n_points/t_sim):end), out.d(1:round(n_points/t_sim):end), ...
      'Color', 'r', 'Marker', 'o', 'LineStyle', 'none', 'LineWidth', 5);
 hold off;
-title('Formal Planner', 'FontSize', 50);
+title('Scenario 3: Formal Planner', 'FontSize', 50);
 xlabel('Longitudinal distance s [m]', 'FontSize', 50);
 ylabel('Lateral Offset d [m]', 'FontSize', 50);
 set(gca, 'FontSize', 50);
